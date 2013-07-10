@@ -23,7 +23,7 @@ class Mosquitto < FPM::Cookery::Recipe
     var('log/mosquitto').mkpath
 
     etc('default').install_p workdir('mosquitto.default'), 'mosquitto'
-    etc('init').install_p builddir('mosquitto.upstart'), 'mosquitto.conf'
+    etc('init').install_p workdir('mosquitto.upstart'), 'mosquitto.conf'
     etc('mosquitto').install_p workdir('mosquitto.conf'), 'mosquitto.conf'
 
     make :install, 'DESTDIR' => destdir
